@@ -3,6 +3,7 @@ package perfserver
 import (
 	"context"
 	edpv1alpha1 "github.com/epmd-edp/perf-operator/pkg/apis/edp/v1alpha1"
+	"github.com/epmd-edp/perf-operator/pkg/controller/perfserver/chain"
 	k8serrors "k8s.io/apimachinery/pkg/api/errors"
 	"sigs.k8s.io/controller-runtime/pkg/client"
 	"sigs.k8s.io/controller-runtime/pkg/controller"
@@ -55,6 +56,10 @@ func (r *ReconcilePerfServer) Reconcile(request reconcile.Request) (reconcile.Re
 		if k8serrors.IsNotFound(err) {
 			return reconcile.Result{}, nil
 		}
+		return reconcile.Result{}, err
+	}
+
+	if err := chain.CreateDefChain(r.client).ServeRequest(i); err != nil {
 		return reconcile.Result{}, err
 	}
 
