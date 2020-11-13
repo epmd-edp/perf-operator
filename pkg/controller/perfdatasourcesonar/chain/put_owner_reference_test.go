@@ -20,7 +20,7 @@ func TestPutOwnerReference_PerfDataSourceContainsPerfServerOwnerReference(t *tes
 		ObjectMeta: v1.ObjectMeta{
 			OwnerReferences: []v1.OwnerReference{
 				{
-					Kind: "PerfServer",
+					Kind: "Codebase",
 				},
 			},
 		},
