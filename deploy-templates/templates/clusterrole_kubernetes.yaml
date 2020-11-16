@@ -26,6 +26,12 @@ rules:
       - codebases
       - codebases/finalizers
       - codebases/status
+      - perfdatasourcejenkinses
+      - perfdatasourcejenkinses/finalizers
+      - perfdatasourcejenkinses/status
+      - perfdatasourcesonars
+      - perfdatasourcesonars/finalizers
+      - perfdatasourcesonars/status
     verbs:
       - '*'
 {{ end }}
